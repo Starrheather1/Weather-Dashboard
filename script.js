@@ -1,29 +1,58 @@
-var weather = {
-    "apikey": "50c9640c4cmsha715b76c75b31a9p1c854bjsn08b9271cd4da",
-    "apikey2": "50c9640c4cmsha715b76c75b31a9p1c854bjsn08b9271cd4da"
+// var weather = {
+//     "apikey": "50c9640c4cmsha715b76c75b31a9p1c854bjsn08b9271cd4da",
+//     "apikey2": "50c9640c4cmsha715b76c75b31a9p1c854bjsn08b9271cd4da"
 
-    // const url = 'https://open-weather13.p.rapidapi.com/city/landon';
-    // const options = {
-    //     method: 'GET',
-    //     headers: {
-    //         'X-RapidAPI-Key': '50c9640c4cmsha715b76c75b31a9p1c854bjsn08b9271cd4da',
-    //         'X-RapidAPI-Host': 'open-weather13.p.rapidapi.com'
-    //     }
-    // };
+// const url = 'https://open-weather13.p.rapidapi.com/city/landon';
+// const options = {
+//     method: 'GET',
+//     headers: {
+//         'X-RapidAPI-Key': '50c9640c4cmsha715b76c75b31a9p1c854bjsn08b9271cd4da',
+//         'X-RapidAPI-Host': 'open-weather13.p.rapidapi.com'
+//     }
+// };
 
-    // try {
-    //     const response = await fetch(url, options);
-    //     const result = await response.text();
-    //     console.log(result);
-    // } catch(error) {
-    //     console.error(error);
+// try {
+//     const response = await fetch(url, options);
+//     const result = await response.text();
+//     console.log(result);
+// } catch(error) {
+//     console.error(error);
+// }
+
+const apikey = "af083a8a81b23e55af7725aa737f4eb4"
+var lat = ""
+var lon = ""
+
+
+const getLatLon = function (cityname) {
+    var fetchUrl = "http://api.openweathermap.org/geo/1.0/direct?q=" + cityname + "&appid=" + apikey
+    fetch(fetchUrl)
+        .then(function(response) {
+            return response.json()
+        })
+        .then(function(data)  {
+            console.log(data)
+            lat = data[0].lat
+            lon = data[0].lon
+
+            fetchWeather()
+        });
 }
 
-const fetchweather = function (city) {
-    fetch("https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}" + city + weather.apikey)
-
+const fetchWeather = function () {
+    fetch("https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&appid=" + apikey)
         .then((response) => response.json())
         .then((data) => console.log(data));
+
+        // .then(function (response) {
+        //     return response.json()
+        // })
+        // .then(function (data) {
+        //     console.log(data)
+        //     lat = data[0].lat
+        //     lon = data[0].lon
+
+// });
 
 }
 
@@ -47,7 +76,7 @@ const displayWeather = function (data) {
 }
 
 
-    let formEl = document.querySelector(".search")
+let formEl = document.querySelector(".search")
 let button = document.getElementById("trigger")
 
 var url = ""
@@ -56,8 +85,9 @@ function search(event) {
     event.preventDefault()
     let input = document.getElementById("value").value
     let input2 = input.trim();
-    url = 'https://open-weather13.p.rapidapi.com/city/' + input2;
-    let urls = 'https://open-weather13.p.rapidapi.com/city/denver';
+    getLatLon(input2)
+    // url = 'https://open-weather13.p.rapidapi.com/city/' + input2;
+    // let urls = 'https://open-weather13.p.rapidapi.com/city/denver';
     //console.log("I work", url)
 
     // const settings = {
@@ -77,7 +107,7 @@ function search(event) {
 
 
 
-    console.log(response.weather[0].description);
+    // console.log(response.weather[0].description);
     // });
 }
 
