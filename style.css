@@ -11,6 +11,15 @@ body {
     font-size: 120%;
   }
   
+  .weather.loading:after {
+    visibility: visible;
+    content: "Loading...";
+    color: white;
+    position: absolute;
+    top: 0;
+    left: 20px;
+  }
+
   /*this is the actual box that holds the search bar and data, I have customized so it fits all screen sizes*/
 
   .card {
@@ -22,13 +31,7 @@ body {
     max-width: 420px;
     margin: 10px;
   }
-  
-  .search {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
+
   button {
     margin: 0.5px;
     border-radius: 50%;
@@ -39,8 +42,16 @@ body {
     background: #7c7c7c2b;
     color: white;
     cursor: pointer;
-   
   }
+  
+  .search {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+   
+
   /*this is the css for the search box*/
 
   input.search-bar {
@@ -80,11 +91,3 @@ body {
     position: relative;
   }
   
-  .weather.loading:after {
-    visibility: visible;
-    content: "Loading...";
-    color: white;
-    position: absolute;
-    top: 0;
-    left: 20px;
-  }
