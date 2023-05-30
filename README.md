@@ -13,7 +13,7 @@ https://starrheather1.github.io/Weather-Dashboard/
 N/A
 
 ## Usage
-Enter desired city in the search box and press the search key. This will bring up all of the weather information with 5 day forecast for the city that was entered.
+Enter desired city in the search box and press the search key. This will bring up all of the weather information with 5 day forecast for the city that was entered. There is also a drop down where you can view previously searched cities.
 
 ## Credits
 
