@@ -25,4 +25,5 @@ Please refer to the license in the repo.
 
 ## Screenshots
 
-![Landing Page](./Images/Passwordgen-Screenshot.png)
+![Landing Page](./Images1/Weather-dashboard1.png)
+![Landing Page](./Images1/Weather-dashboard2.png)
